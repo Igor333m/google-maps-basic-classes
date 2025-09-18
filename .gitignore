@@ -1,0 +1,36 @@
+.parcel-cache/
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+
+# TypeScript
+dist/
+build/
+*.tsbuildinfo
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor backups
+*.swp
+*~
+
+# Misc
+.idea/
+*.iml
