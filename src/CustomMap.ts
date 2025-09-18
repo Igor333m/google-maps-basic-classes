@@ -1,5 +1,3 @@
-import { PinElement } from '@googlemaps/adv-markers-utils';
-
 interface Position {
   lat: number,
   lng: number
@@ -10,7 +8,7 @@ export class CustomMap {
   zoom: number
   position: Position
   mapId: string
-  private googleMap: google.maps.Map
+  private googleMap!: google.maps.Map
 
 
   async initMap(): Promise<void> {
@@ -34,7 +32,7 @@ export class CustomMap {
    * @param pinElement -  PinElement (from @googlemaps/adv-markers-utils) used as the marker's content.
    * @returns Promise that resolves to the created google.maps.marker.AdvancedMarkerElement
    */
-  async addMarker(position: Position, title: string, pinElement: PinElement): Promise<google.maps.marker.AdvancedMarkerElement> {
+  async addMarker(position: Position, title: string, pinElement: any): Promise<google.maps.marker.AdvancedMarkerElement> {
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary
 
     return new AdvancedMarkerElement({
