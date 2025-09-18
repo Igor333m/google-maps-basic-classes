@@ -10,8 +10,6 @@ import { CustomMap } from './CustomMap'
 // new google.maps.Map(document.getElementById('map') as HTMLElement)
 
 const initialMapPosition = { lat: 34.052235, lng: -118.243683 }
-const positionB = { lat: 34.1607247, lng: -118.4468333 }
-const positionC = { lat: 33.999724, lng: -118.4887557 }
 
 const newMap = new CustomMap(1, initialMapPosition, 'newMapId')
 
