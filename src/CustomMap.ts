@@ -34,13 +34,24 @@ export class CustomMap {
    */
   async addMarker(position: Position, title: string, pinElement: any): Promise<google.maps.marker.AdvancedMarkerElement> {
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary
-
-    return new AdvancedMarkerElement({
+    
+    const marker = new AdvancedMarkerElement({
       map: this.googleMap,
       position,
       title,
-      content: pinElement
+      content: pinElement,
+      gmpClickable: true
     })
+    
+    // Add a click listener for each marker, and set up the info window.
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow
+      // infoWindow.close();
+      infoWindow.setContent(marker.title);
+      infoWindow.open(marker.map, marker);
+    })
+
+    return marker
   }
 
   /**
