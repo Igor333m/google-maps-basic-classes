@@ -1,19 +1,16 @@
 import { faker } from "@faker-js/faker"
+import { Position } from './CustomMap'
 
-export class Company {
+export class Company implements Position {
   name: string
   moto: string
-  location: {
-    lat: number
-    lng: number
-  }
+  lat: number
+  lng: number
 
   constructor() {
     this.name = faker.company.name()
     this.moto = faker.company.catchPhrase()
-    this.location = {
-      lat: faker.location.latitude(),
-      lng: faker.location.longitude()
-    }
+    this.lat = faker.location.latitude()
+    this.lng = faker.location.longitude()
   }
 }

@@ -2,7 +2,6 @@
  * /// <reference types="@types/google.maps" />
  */
 
-
 import { User } from './User'
 import { Company } from './Company'
 import { CustomMap } from './CustomMap'
@@ -16,7 +15,6 @@ const newMap = new CustomMap(1, initialMapPosition, 'newMapId')
 
 async function addNewUser(numOfUsers: number): Promise<void> {
 
-  
   for(let i = 0; numOfUsers > i; i++ ) {
     const {PinElement} = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary
     const pinElement = new PinElement({
@@ -25,7 +23,7 @@ async function addNewUser(numOfUsers: number): Promise<void> {
 
     let user = new User()
     
-    newMap.addMarker({lat: user.location.lat, lng: user.location.lng}, `${user.firstName} ${user.lastName}`, pinElement.element)
+    newMap.addMarker({lat: user.lat, lng: user.lng}, `${user.firstName} ${user.lastName}`, pinElement.element)
   }
 }
 
@@ -33,8 +31,6 @@ addNewUser(3)
 
 async function addNewCompany(numOfCompanies: number): Promise<void> {
 
-  
-  
   for(let i = 0; numOfCompanies > i; i++ ) {
     const {PinElement} = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary
     const pinElement = new PinElement({
@@ -42,7 +38,14 @@ async function addNewCompany(numOfCompanies: number): Promise<void> {
     })
     let company = new Company()
 
-    newMap.addMarker({lat: company.location.lat, lng: company.location.lng}, `${company.name} \n${company.moto}`, pinElement.element)
+    newMap.addMarker({lat: company.lat, lng: company.lng}, 
+      `
+        <div>
+          <h2>${company.name}</h2>
+          <h3>${company.moto}</h3>
+        </div>
+      `
+      , pinElement.element)
   }
 }
 
